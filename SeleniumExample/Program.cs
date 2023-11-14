@@ -1,19 +1,60 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumExample;
 
-IWebDriver driver = new ChromeDriver();
-driver.Url = "https://www.google.com";
-Thread.Sleep(2000);
-string title = driver.Title;
-try
+GHPTests ghpTests = new GHPTests();
+//Console.WriteLine("Choose: 1: Edge 2: Chrome");
+//int ch = Convert.ToInt32(Console.ReadLine());
+//switch (ch)
+//{
+//    case 1:
+
+//        ghpTests.InitializeEdgeDriver();
+//        break;
+//    case 2:
+
+//        ghpTests.InitializeChromeDriver();
+//        break;
+
+
+//}
+
+List<string> drivers = new List<string>();
+drivers.Add("Chrome");
+drivers.Add("Edge");
+
+foreach (var d in drivers)
 {
-    Assert.AreEqual("Google", title);
-    Console.WriteLine(" Test Passed");
-}
-catch (AssertionException) {
-    Console.WriteLine(" Test failed");
+    switch (d)
+    {
+       
+        case "Chrome":
+
+            ghpTests.InitializeChromeDriver();
+            break;
+        case "Edge":
+
+            ghpTests.InitializeEdgeDriver();
+            break;
+    }
 
 
+            try
+    {
+        //ghpTests.TitleTest();
+        //ghpTests.PageSourceAndURLTest();
+        //ghpTests.GoogleSearchTest();
+        //ghpTests.GmailLinkTest();
+        //ghpTests.ImagesLinkTest();
+        //ghpTests.LocalizationTest();
+        ghpTests.GoogleAppYoutubeTest();
+
+    }
+    catch (AssertionException)
+    {
+        Console.WriteLine(" Title Test failed");
+    }
+    ghpTests.Destruct();
+
 }
-driver.Close();
