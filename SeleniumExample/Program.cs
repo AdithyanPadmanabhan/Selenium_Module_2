@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumExample;
 
-GHPTests ghpTests = new GHPTests();
+//GHPTests ghpTests = new GHPTests();
 //Console.WriteLine("Choose: 1: Edge 2: Chrome");
 //int ch = Convert.ToInt32(Console.ReadLine());
 //switch (ch)
@@ -20,41 +20,93 @@ GHPTests ghpTests = new GHPTests();
 
 //}
 
+//List<string> drivers = new List<string>();
+//drivers.Add("Chrome");
+//drivers.Add("Edge");
+
+//foreach (var d in drivers)
+//{
+
+//    switch (d)
+//    {
+
+//        case "Chrome":
+
+//            ghpTests.InitializeChromeDriver();
+//            break;
+//        case "Edge":
+
+//            ghpTests.InitializeEdgeDriver();
+//            break;
+//    }
+
+
+//            try
+//    {
+//        //ghpTests.TitleTest();
+//        //ghpTests.PageSourceAndURLTest();
+//        //ghpTests.GoogleSearchTest();
+//        //ghpTests.GmailLinkTest();
+//        //ghpTests.ImagesLinkTest();
+//        //ghpTests.LocalizationTest();
+//        ghpTests.GoogleAppYoutubeTest();
+
+//    }
+//    catch (AssertionException)
+//    {
+//        Console.WriteLine(" Title Test failed");
+//    }
+//    ghpTests.Destruct();
+
+//}
+
+// amazon test
+
+
 List<string> drivers = new List<string>();
 drivers.Add("Chrome");
-drivers.Add("Edge");
+//drivers.Add("Edge");
 
 foreach (var d in drivers)
 {
+    AmazonTests az = new AmazonTests();
+
+
     switch (d)
     {
-       
+
         case "Chrome":
 
-            ghpTests.InitializeChromeDriver();
+            az.InitializeChromeDriver();
             break;
         case "Edge":
 
-            ghpTests.InitializeEdgeDriver();
+            az.InitializeEdgeDriver();
             break;
     }
 
 
-            try
+    try
     {
-        //ghpTests.TitleTest();
-        //ghpTests.PageSourceAndURLTest();
-        //ghpTests.GoogleSearchTest();
-        //ghpTests.GmailLinkTest();
-        //ghpTests.ImagesLinkTest();
-        //ghpTests.LocalizationTest();
-        ghpTests.GoogleAppYoutubeTest();
+        //az.TitleTest();
+        //az.LogoClickTest();
+        Thread.Sleep(3000); 
+        //az.SerachProductTest();
+        //az.ReloadHomePageTest();
+        //az.TodaysDealTest();
+        //az.SignInAccountListTest();
+        az.SearchAndFilterProductByBrandTest();
+        az.SortBySelectTest();
 
     }
     catch (AssertionException)
     {
-        Console.WriteLine(" Title Test failed");
+        Console.WriteLine("  Test failed");
     }
-    ghpTests.Destruct();
-
+    catch(NoSuchElementException nse)
+    {
+        Console.WriteLine(nse.Message);
+    }
+    az.Destruct();
 }
+
