@@ -15,6 +15,7 @@ namespace SeleniumNunitExample
         Dictionary<string, string>? properties;
       public  IWebDriver driver;
         public void ReadConfigSettings()
+
         {
             string currentDirectory = Directory.GetParent(@"../../../").FullName;
             properties= new Dictionary<string,string>();
