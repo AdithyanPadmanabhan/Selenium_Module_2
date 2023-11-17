@@ -75,6 +75,7 @@ namespace SeleniumNunitExample
         public void Cleanup() 
         {
             driver.Quit();
+
            
         }
     }

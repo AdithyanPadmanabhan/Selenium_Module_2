@@ -47,11 +47,13 @@ namespace SeleniumNunitExample
                 if (url == null)
                 {
                     Console.WriteLine("URL is null");
+
                     continue;
                 }
                 else
                 {
                   bool isWorking =  CheckLinkStatus(url);
+
                     if (isWorking)
                         Console.WriteLine(url + "  is working");
                     else
