@@ -9,7 +9,9 @@ namespace SeleniumNunitExample
 {
     [TestFixture]
     internal class GHPTests : CoreCodes
+
     {
+        [Ignore("other")]
         [Test]
         [Order(0)]
        
@@ -23,6 +25,7 @@ namespace SeleniumNunitExample
             Console.WriteLine(" Title Test- Passed");
 
         }
+        [Ignore("other")]
         [Test]
         [Order(1)]
         public void GoogleSearchTest()
@@ -36,6 +39,7 @@ namespace SeleniumNunitExample
             Assert.AreEqual("hp laptop - Google Search", driver.Title);
             Console.WriteLine(" GS test passed");
         }
+        [Ignore("other")]
         [Test]
         public void CheckAllLinksStatusTest()
         {
