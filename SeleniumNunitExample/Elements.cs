@@ -31,6 +31,7 @@ namespace SeleniumNunitExample
             Assert.True(driver.FindElement(By.XPath("//input[contains(@id,'commands')]")).Selected);
 
         }
+        [Ignore("not correct")]
         [Test] public void TestFormElement()
         {
             Thread.Sleep(2000);
@@ -90,6 +91,73 @@ namespace SeleniumNunitExample
             Thread.Sleep(3000);
 
             
+
+
+
+        }
+        [Ignore("")]
+        [Test]
+       
+        public void TestWindow()
+        {
+            driver.Url = "https://demoqa.com/browser-windows";
+            string parentWindowhandle = driver.CurrentWindowHandle;
+            Console.WriteLine("Parent window Handle " +parentWindowhandle);
+            IWebElement clickElement = driver.FindElement(By.Id("tabButton"));
+            for(int i=0; i<3;i++)
+            {
+                clickElement.Click();
+                Thread.Sleep(3000);
+            }
+            List<string> listWindow = driver.WindowHandles.ToList();
+
+            string lastWindowhandle = "";
+            foreach(var handle in listWindow)
+            {
+                Console.WriteLine("Switching to window: "+ handle);
+                driver.SwitchTo().Window(handle);
+                Thread.Sleep(3000);
+                Console.WriteLine("Navigating to google");
+                driver.Navigate().GoToUrl("https://google.com");
+                Thread.Sleep(3000);
+            }
+            driver.SwitchTo().Window(parentWindowhandle);
+            driver.Quit();
+
+        }
+        [Test]
+        public void TestAlert()
+        {
+            driver.Url = "https://demoqa.com/alerts";
+            IWebElement element = driver.FindElement(By.Id("alertButton"));
+            Thread.Sleep(3000);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click()", element);
+            IAlert simpleAlert = driver.SwitchTo().Alert();
+            string alertText = simpleAlert.Text;    
+            Console.WriteLine("Alert text is "+alertText);
+            simpleAlert.Accept();
+            Thread.Sleep(3000);
+
+            element = driver.FindElement(By.Id("confirmButton"));
+   
+            element.Click();
+            Thread.Sleep(5000);
+
+            IAlert confirmationAlert = driver.SwitchTo().Alert();
+            string alertTexts = confirmationAlert.Text;
+            Console.WriteLine("Alert text is " + alertTexts);
+            confirmationAlert.Dismiss();
+            Thread.Sleep(5000);
+
+            element = driver.FindElement(By.Id("promtButton"));
+            element.Click();
+            Thread.Sleep(5000);
+            IAlert prompAlert = driver.SwitchTo().Alert();
+          string   alertTex = prompAlert.Text;
+            Console.WriteLine("Alert text is " + alertTex);
+            prompAlert.SendKeys("Accepting the alert");
+            Thread.Sleep(5000);
+            prompAlert.Accept();
 
 
 
