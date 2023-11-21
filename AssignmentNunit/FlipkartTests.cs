@@ -47,17 +47,17 @@ namespace AssignmentNunit
                 ("//div[@class='_2kHMtA'][1]")));
             lapTopSelection.Click();
 
-            //List<string> listWindow = driver.WindowHandles.ToList();
+            List<string> listWindow = driver.WindowHandles.ToList();
 
-            //string lastWindowhandle = "";
-            //foreach (var handle in listWindow)
-            //{
-                
-            //    driver.SwitchTo().Window(handle);
-            //    Thread.Sleep(3000);
+            string lastWindowhandle = "";
+            foreach (var handle in listWindow)
+            {
 
-            //}
-           Thread.Sleep(3000);
+                driver.SwitchTo().Window(handle);
+                Thread.Sleep(3000);
+
+            }
+         
             IWebElement addCartButton = fluentWait.Until(d => d.FindElement(
                 By.XPath("//button[@class='_2KpZ6l _2U9uOA _3v1-ww']")));
                    addCartButton.Click();
@@ -66,7 +66,7 @@ namespace AssignmentNunit
             IWebElement Cart = fluentWait.Until(d => d.FindElement(
                By.XPath("//div[@class='YUhWwv']")));
             Cart.Click();
-
+            Thread.Sleep(3000);
         }
     }
 }
