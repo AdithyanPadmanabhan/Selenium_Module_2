@@ -57,6 +57,8 @@ namespace AssignmentNunit
                 Thread.Sleep(3000);
 
             }
+
+
          
             IWebElement addCartButton = fluentWait.Until(d => d.FindElement(
                 By.XPath("//button[@class='_2KpZ6l _2U9uOA _3v1-ww']")));

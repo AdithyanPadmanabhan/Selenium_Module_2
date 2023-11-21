@@ -156,6 +156,20 @@ namespace SeleniumNunitExample
 
             emailInput.SendKeys(email);
             passwordInput.SendKeys(password);
+            TakeScreenShot();
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+
+            js.ExecuteScript("arguments[0].scrollIntoView(true); ",
+           driver.FindElement(By.XPath("//button[@type='submit']")));// scrolling page
+
+
+            Thread.Sleep(5000);
+
+            js.ExecuteScript("arguments[0].click(); ",
+            driver.FindElement(By.XPath("//button[@type='submit']")));
+
+            
             ClearForm(emailInput);
             ClearForm(passwordInput);
 
@@ -169,6 +183,17 @@ namespace SeleniumNunitExample
                 new object[] {"aqwerty@gmail","12345"},
                 new object[] {"zxcvbn@asd","09876"}
             };
+        }
+
+        public void TakeScreenShot()
+        {
+            ITakesScreenshot its = (ITakesScreenshot)driver;
+            Screenshot ss =its.GetScreenshot();
+            string currentDirectory = Directory.GetParent(@"../../../").FullName;
+         
+            string filePath = currentDirectory + "/Screenshot/ss_" + DateTime.Now.ToString("yyyy-mm-dd_HH.mm.ss") + ".png";
+             ss.SaveAsFile(filePath);
+        
         }
 
     }
