@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AssignmentNunit
+namespace NaptolPOM
 {
     internal class CoreCodes
     {
         Dictionary<string, string>? properties;
-        public IWebDriver driver;
+        public IWebDriver? driver;
         public void ReadConfigSettings()
 
         {

@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumNunitExample", "Sel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment", "Assignment\Assignment.csproj", "{5749B0BD-7CBE-4AE8-98CC-BBD3F76F2CD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignmentNunit", "AssignmentNunit\AssignmentNunit.csproj", "{287DDFDB-2EFC-4D04-AC4B-276AECD78928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssignmentNunit", "AssignmentNunit\AssignmentNunit.csproj", "{287DDFDB-2EFC-4D04-AC4B-276AECD78928}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rediff", "Rediff\Rediff.csproj", "{8D50461A-A429-43B6-B1F2-6B2CBB9E9E33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaptolPOM", "NaptolPOM\NaptolPOM.csproj", "{CDBAB021-83F4-4EEF-876B-C8752EC69EF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{287DDFDB-2EFC-4D04-AC4B-276AECD78928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{287DDFDB-2EFC-4D04-AC4B-276AECD78928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{287DDFDB-2EFC-4D04-AC4B-276AECD78928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D50461A-A429-43B6-B1F2-6B2CBB9E9E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D50461A-A429-43B6-B1F2-6B2CBB9E9E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D50461A-A429-43B6-B1F2-6B2CBB9E9E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D50461A-A429-43B6-B1F2-6B2CBB9E9E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBAB021-83F4-4EEF-876B-C8752EC69EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBAB021-83F4-4EEF-876B-C8752EC69EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBAB021-83F4-4EEF-876B-C8752EC69EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBAB021-83F4-4EEF-876B-C8752EC69EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
