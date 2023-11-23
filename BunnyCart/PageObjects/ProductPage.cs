@@ -33,9 +33,12 @@ namespace BunnyCart.PageObjects
         [FindsBy(How = How.Id, Using = "product-addtocart-button")]
         private IWebElement? AddToCartButton { get; set; }
 
-        public string? GetProductTitleLabel()
+        public string? GetProductUrl()
+
         {
-            return ProductTitleLabel?.Text;
+
+            string url = driver.Url;
+            return url;
         }
 
 
@@ -46,7 +49,7 @@ namespace BunnyCart.PageObjects
 
         public void ClickAddToCartButton()
         {
-            AddToCartButton
+            AddToCartButton?.Click();
         }
     }
 }

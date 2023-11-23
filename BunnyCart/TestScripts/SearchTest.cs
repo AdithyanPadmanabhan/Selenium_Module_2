@@ -12,7 +12,7 @@ namespace BunnyCart.TestScripts
     {
       
         [Test]
-        [TestCase("Water")]
+        [TestCase("Water Poppy")]
 
         public void SearchProductAndAddToCart(string searchText)
         {
@@ -24,7 +24,10 @@ namespace BunnyCart.TestScripts
 
             Assert.That(searchText.Contains(searchPage?.GetFirstProductLink()));
             var productPage = searchPage?.ClickFirstProductLink();
-            Assert.That(searchPage?.Equals(productPage?.GetProductTitleLabel()));
+
+            //Assert.That(searchPage?.Equals(productPage?.GetProductTitleLabel()));
+            string check = productPage?.GetProductUrl();
+            Assert.That(check.Contains("Water-poppy"));
 
             productPage?.GetIncQtyLink();
             productPage?.ClickAddToCartButton();
