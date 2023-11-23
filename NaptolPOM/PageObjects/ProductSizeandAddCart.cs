@@ -34,5 +34,11 @@ namespace NaptolPOM.PageObjects
         {
             AddtoCart?.Click();
         }
+
+        public string GetTitle()
+        {
+            string title = driver.Url;
+            return title;
+        }
     }
 }

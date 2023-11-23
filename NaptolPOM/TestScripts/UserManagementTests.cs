@@ -1,4 +1,5 @@
 ﻿using NaptolPOM;
+using OpenQA.Selenium;
 using Rediff.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,6 @@ namespace Rediff.TestScripts
     {
 
         
-
-
-        
-
         [Test, Order(1), Category("Regression Test")]
         public void SearchProductTest()
         {
@@ -40,8 +37,11 @@ namespace Rediff.TestScripts
 
             productPage.SizeSelectionClick();
             productPage.AddTocartClick();
-
             Thread.Sleep(5000);
+            string url = productPage.GetTitle();
+
+            Assert.That(url, Is.EqualTo(driver.FindElement(By.XPath("//a[contains(text(),'LRG4)')]")).GetAttribute("href")));
+            
            
 
 

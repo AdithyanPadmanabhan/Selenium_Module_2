@@ -22,8 +22,7 @@ namespace Rediff.PageObjects
         [FindsBy(How =How.Id,Using = "header_search_text")]
         public IWebElement? SearchProduct { get; set; }
 
-
-       public ProductList searchProductType(string product)
+public ProductList searchProductType(string product)
         {
             SearchProduct?.SendKeys(product);
             SearchProduct?.SendKeys(Keys.Enter);
