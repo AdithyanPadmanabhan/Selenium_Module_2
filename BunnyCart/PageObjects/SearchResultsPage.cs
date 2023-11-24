@@ -25,21 +25,24 @@ namespace BunnyCart.PageObjects
         }
         // [FindsBy(How=How.XPath,Using ="//div[]@class='product-item-info-type3'")]
 
-        [FindsBy(How = How.XPath,
-         Using = "//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li[1]/div/div[2]/strong/a[1]")]
+        // [FindsBy(How = How.XPath,
+        //  Using = "//*[@id=\"amasty-shopby-product-list\"]/div[2]/ol/li[1]/div/div[2]/strong/a[1]")]
+        [FindsBy(How = How.LinkText, Using = "Water Poppy")]
+        private IWebElement? ProductSelect { get; set; }
 
-        private IWebElement? FirstproductLink { get; set; }
-
-        public string? GetFirstProductLink()
+        //Act
+        public string? GetProductSelect()
         {
-            return FirstproductLink?.Text;
+            return ProductSelect?.Text;
         }
-
-        public ProductPage ClickFirstProductLink()
+        public IWebElement GetProductSelect(string pId)
         {
-
-            FirstproductLink?.Click();
-            return  new ProductPage(driver);
+            return driver.FindElement(By.XPath("(//div[@data-container='product-grid'])[" + pId + "]"));
+        }
+        public ProductPage ClickProduct(string pId)
+        {
+            GetProductSelect(pId)?.Click();
+            return new ProductPage(driver);
         }
     }
 }

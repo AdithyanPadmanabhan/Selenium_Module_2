@@ -10,11 +10,11 @@ namespace BunnyCart.TestScripts
 {
     internal class SearchTest : CoreCodes
     {
-      
-        [Test]
-        [TestCase("Water Poppy")]
 
-        public void SearchProductAndAddToCart(string searchText)
+        [Test]
+        [TestCase("Water Poppy", "2")]
+
+        public void SearchProductAndAddToCart(string searchText, string pId)
         {
             BCHPage bchp = new(driver);
             var searchPage = bchp?.TypeSearchInput(searchText);
@@ -22,19 +22,26 @@ namespace BunnyCart.TestScripts
            // ScrollIntoView(driver, driver.FindElement(By.Id("password")));
 
 
-            Assert.That(searchText.Contains(searchPage?.GetFirstProductLink()));
-            var productPage = searchPage?.ClickFirstProductLink();
+            Assert.That(searchText.Contains(searchPage?.GetProductSelect()));
+
+            var productPage = searchPage?.ClickProduct(pId);
 
             //Assert.That(searchPage?.Equals(productPage?.GetProductTitleLabel()));
             string check = productPage?.GetProductUrl();
-            Assert.That(check.Contains("Water-poppy"));
+            Assert.That(check.Contains("water-poppy"));
 
             productPage?.GetIncQtyLink();
             productPage?.ClickAddToCartButton();
             Thread.Sleep(3000);
 
-            
 
+            static object[] productData()
+            {
+                return new object[]
+                {
+                new object[]  { "5" }
+                };
+            }
         }
     }
 }
