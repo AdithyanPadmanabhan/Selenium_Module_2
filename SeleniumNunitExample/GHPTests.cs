@@ -11,7 +11,7 @@ namespace SeleniumNunitExample
     internal class GHPTests : CoreCodes
 
     {
-        [Ignore("other")]
+       // [Ignore("other")]
         [Test]
         [Order(0)]
        
@@ -25,19 +25,34 @@ namespace SeleniumNunitExample
             Console.WriteLine(" Title Test- Passed");
 
         }
-        [Ignore("other")]
+        //  [Ignore("other")]
         [Test]
         [Order(1)]
         public void GoogleSearchTest()
         {
+            string? currentDirectory = Directory.GetParent(@"../../../").FullName;
+            string? excelFilePath = currentDirectory + "\\InputData.xlsx";
+            Console.WriteLine(excelFilePath);
+
+
+            List<ExcelData> exceDataList = ExcelUtils.ReadExcelData(excelFilePath);
+
+            foreach (var excelData in exceDataList) { 
+
             IWebElement searchInputTextBox = driver.FindElement(By.Id("APjFqb"));
-            searchInputTextBox.SendKeys("hp laptop");
+            searchInputTextBox.SendKeys(excelData.SearchText);
             Thread.Sleep(3000);
             //IWebElement searchButton = driver.FindElement(By.Name("btnK"));
             IWebElement searchButton = driver.FindElement(By.ClassName("gNO89b"));
             searchButton.Click();
-            Assert.AreEqual("hp laptop - Google Search", driver.Title);
+                // Assert.AreEqual("hp laptop - Google Search", driver.Title);
+
+                Assert.That(driver.Title, Is.EqualTo(excelData.SearchText + " - Google Search"));
             Console.WriteLine(" GS test passed");
+
+                driver.Navigate().GoToUrl("https://www.google.com/");
+
+        }
         }
         [Ignore("other")]
         [Test]

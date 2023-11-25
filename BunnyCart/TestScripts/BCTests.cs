@@ -17,18 +17,34 @@ namespace BunnyCart.TestScripts
             BCHPage bchp = new(driver);
             bchp.ClickCreateAccountLink();
             Thread.Sleep(3000);
+            //try
+            //{
+            //    Assert.That(driver.FindElement(By.XPath("//h1[contains(text(),'Create an Account')]"))
+            //        .Text, Is.EqualTo("Create an Account"));
+
+            //}
+            //catch (AssertionException)
+            //{
+            //    Console.WriteLine("Create Account modal is not present");
+            //}
+
             try
             {
-                Assert.That(driver.FindElement(By.XPath("//h1[contains(text(),'Create an Account')]"))
-                    .Text, Is.EqualTo("Create an Account"));
-
+                Assert.That(driver?.FindElement(By.XPath("//div[" +
+                    "@class='modal-inner-wrap']//following::h1[2]")).Text,
+                    Is.EqualTo("Create an Account"));
+                test = extent.CreateTest("Create Account Link Test - Pass");
+                test.Pass("Create Account Link success");
+                Console.WriteLine("ERCP");
             }
-            catch (AssertionException)
+            catch
             {
-                Console.WriteLine("Create Account modal is not present");
+                test = extent.CreateTest("Create Account Link Test - Fail");
+                test.Fail("Create Account Link failed");
+                Console.WriteLine("ERCF");
             }
 
-           // bchp.SignUp("Adhi", "Padman", "adhi@gmail.com", "123456", "123456", "8921287202");
+            // bchp.SignUp("Adhi", "Padman", "adhi@gmail.com", "123456", "123456", "8921287202");
 
 
 
